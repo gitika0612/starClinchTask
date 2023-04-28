@@ -1,0 +1,11 @@
+.rec-arrow {
+  display: none;
+}
+
+.rec-dot_active {
+  background-color: #000 !important;
+  box-shadow: rgb(0 0 0) 0px 0px 1px 3px !important;
+}
+.rec-dot:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 1px 2px !important;
+}

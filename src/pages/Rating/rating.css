@@ -1,0 +1,17 @@
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+button span{
+  font-size: 35px;
+  display: flex !important;
+  flex-direction: row !important;
+}
+.on {
+  color: #ff6b6b!important;
+}
+.off {
+  color:#ff6b6b66;
+}
