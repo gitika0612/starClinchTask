@@ -40,33 +40,34 @@ const PopUp = styled.div`
 const Home = () => {
   const [time, setTime] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   //pop up triggers after 45 sec
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setTime((previousTime) => previousTime + 1);
-  //   }, 1000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime((previousTime) => previousTime + 1);
+    }, 1000);
 
-  //   return () => clearInterval(timer);
-  // }, []);
+    return () => clearInterval(timer);
+  }, []);
 
-  // useEffect(() => {
-  //   if (time >= 45) {
-  //     setShowPopup(true);
-  //   }
-  // }, [time]);
+  useEffect(() => {
+    if (time >= 45) {
+      setShowPopup(true);
+    }
+  }, [time]);
 
-  // const handleSubmit = (event) => {
-  //   // event.preventDefault();
-  //   setShowPopup(false);
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setShowModal(!showModal);
+  };
 
   //exit intent
   useEffect(() => {
     const handleExitIntent = (event) => {
       if (event.clientY < 0) {
-        setShowPopup(true);
+        setShowModal(true);
       }
     };
 
@@ -81,7 +82,7 @@ const Home = () => {
   return (
     <>
     {/* pop up triggers after 45 sec. */}
-      {/* {showPopup && (
+      {showPopup && (
         <PopUp>
           <>
             <form onSubmit={handleSubmit}>
@@ -95,13 +96,16 @@ const Home = () => {
             </form>
           </>
         </PopUp>
-      )} */}
+      )}
 
-      {showPopup && (
+      {showModal && (
         <PopUp> 
-          <h2> ARE YOU REALLY WANT TO LEAVE?</h2>
-          <div style={{display: 'flex'}}>
-          </div>
+          <>
+          <button onClick={handleSubmit}>X</button>
+            <form>
+              <h2 style={{fontSize: '12px'}}>ARE YOU REALLY WANT TO LEAVE THE PAGE?</h2>
+            </form>
+          </>
         </PopUp>
       )}
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
@@ -87,13 +87,63 @@ const Title = styled.div`
   // position: relative;
   margin-top: 20px;
 `;
+
+const PopUp = styled.div`
+  position: fixed;
+  top: 20%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  @media only screen and (max-width: 600px) {
+    left: 50%;
+    top: 22%
+  }
+`;
+
+
 const Form = () => {
   const [phone, setPhone] = React.useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setShowModal(!showModal);
+  };
+
+  //exit intent
+  useEffect(() => {
+    const handleExitIntent = (event) => {
+      if (event.clientY < 0) {
+        setShowModal(true);
+      }
+    };
+
+    window.addEventListener('mouseout', handleExitIntent);
+
+    return () => {
+      window.removeEventListener('mouseout', handleExitIntent);
+    };
+  }, []);
 
   const handleChange = (newPhone) => {
     setPhone(newPhone);
   };
   return (
+    <>
+    {showModal && (
+      <PopUp> 
+        <>
+        <button onClick={handleSubmit}>X</button>
+          <form>
+            <h2 style={{fontSize: '12px'}}>ARE YOU REALLY WANT TO LEAVE THE PAGE?</h2>
+          </form>
+        </>
+      </PopUp>
+    )}
+
     <Maindiv>
       <FormBox>
         <Flex1
@@ -203,6 +253,7 @@ const Form = () => {
         <PriceBtn>Show Best Price</PriceBtn>
       </Price>
     </Maindiv>
+    </>
   );
 };
 
