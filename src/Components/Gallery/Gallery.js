@@ -38,6 +38,10 @@ const Images = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   cursor: pointer;
+
+  @media only screen and (max-width: 600px) {
+    margin-left: 1.5rem
+  }
 `;
 const Button = styled.div`
   height: 42px;
@@ -63,6 +67,11 @@ const Btn = styled.button`
     background: white;
     color: black;
     border: 2px solid red;
+  }
+
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    padding: 6px 55px
   }
 `;
 

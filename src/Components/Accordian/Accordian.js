@@ -60,6 +60,9 @@ const Performance = styled.div`
   padding-right: 15px;
   padding-left: 15px;
   box-sizing: border-box;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 1rem
+  }
 `;
 const Performing = styled.div`
   background-color: #ffe6e2;
@@ -70,6 +73,9 @@ const Performing = styled.div`
   padding-right: 15px;
   padding-left: 15px;
   box-sizing: border-box;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 1rem
+  }
 `;
 const Duration = styled.div`
   background-color: #f5e6fe;
@@ -80,6 +86,9 @@ const Duration = styled.div`
   padding-right: 15px;
   padding-left: 15px;
   box-sizing: border-box;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 1rem
+  }
 `;
 const Travel = styled.div`
   background-color: #fff1c0;
@@ -90,6 +99,9 @@ const Travel = styled.div`
   padding-right: 15px;
   padding-left: 15px;
   box-sizing: border-box;
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 1rem
+  }
 `;
 
 const Accordian = () => {

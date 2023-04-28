@@ -9,10 +9,19 @@ const AboutContainer = styled.div`
   grid-column-gap: 5%;
   align-items: center;
   margin-top: 1rem;
+  @media only screen and (max-width: 600px){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const AboutImage = styled.div`
   width: 100%;
   height: 340px;
+  @media only screen and (max-width: 600px) {
+   height: 240px;
+   width: 100%;
+  }
 `;
 const Image = styled.img`
   border-radius: 10px;
@@ -31,6 +40,10 @@ const Heading = styled.h2`
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
+  @media only screen and (max-width: 600px){
+    font-size: 22px;
+    margin-top: .5rem
+  }
 `;
 const Type = styled.h3`
   font-size: 16px;
@@ -69,10 +82,21 @@ const Btn = styled.button`
     color: black;
     border: 2px solid red;
   }
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+    padding: 6px 55px
+  }
 `;
-const AboutPara = styled.p``;
+const AboutPara = styled.p`
+@media only screen and (max-width: 600px) {
+  font-size: 14px
+}
+`;
 const Breadcrumbs = styled.div`
   margin-top: 0.5rem;
+  @media only screen and (max-width: 600px) {
+    margin-left: 1.1rem;
+  }
 `;
 const BDiv = styled.div`
   //  display: block;

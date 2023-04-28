@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import About from "../../Components/About/About";
 import Gallery from "../../Components/Gallery/Gallery";
 import Accordian from "../../Components/Accordian/Accordian";
-import SimilarArtist from '../../Components/SimilarArtist/Artist';
+import SimilarArtist from "../../Components/SimilarArtist/Artist";
 import styled from "styled-components";
-import './home.css';
+import "./home.css";
 
 const MainDiv = styled.div`
   width: 100%;
@@ -12,6 +12,13 @@ const MainDiv = styled.div`
   padding-left: 10rem;
   margin-right: auto;
   margin-left: auto;
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  padding-right: 5rem;
+  padding-left: 5rem;
+  margin-right: auto;
+  margin-left: auto;
+  }
 `;
 
 const PopUp = styled.div`
@@ -23,6 +30,10 @@ const PopUp = styled.div`
   border: 1px solid #ccc;
   padding: 20px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  @media only screen and (max-width: 600px) {
+    left: 50%;
+    top: 22%
+  }
 `;
 
 const Home = () => {
@@ -50,7 +61,7 @@ const Home = () => {
   return (
     <>
       {showPopup && (
-        <PopUp >
+        <PopUp>
           <>
             <form onSubmit={handleSubmit}>
               <label for="name">Name:</label>
