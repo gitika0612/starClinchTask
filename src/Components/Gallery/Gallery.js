@@ -167,6 +167,11 @@ const Gallery = () => {
                       borderRadius: "10px",
                       maxWidth: " 100%",
                       maxHeight: "100%",
+                      '@media only screen and (max-width: 600px) ': {
+                        maxHeight: '30%',
+                        maxWidth: "30%",
+                        border: "5px solid #fff",
+                      },
                     }}
                     src={image[modal]?.image}
                   />

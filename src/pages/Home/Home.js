@@ -6,6 +6,7 @@ import SimilarArtist from "../../Components/SimilarArtist/Artist";
 import styled from "styled-components";
 import "./home.css";
 
+
 const MainDiv = styled.div`
   width: 100%;
   padding-right: 10rem;
@@ -40,27 +41,47 @@ const Home = () => {
   const [time, setTime] = useState(0);
   const [showPopup, setShowPopup] = useState(false);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime((previousTime) => previousTime + 1);
-    }, 1000);
+  //pop up triggers after 45 sec
 
-    return () => clearInterval(timer);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setTime((previousTime) => previousTime + 1);
+  //   }, 1000);
+
+  //   return () => clearInterval(timer);
+  // }, []);
+
+  // useEffect(() => {
+  //   if (time >= 45) {
+  //     setShowPopup(true);
+  //   }
+  // }, [time]);
+
+  // const handleSubmit = (event) => {
+  //   // event.preventDefault();
+  //   setShowPopup(false);
+  // };
+
+  //exit intent
+  useEffect(() => {
+    const handleExitIntent = (event) => {
+      if (event.clientY < 0) {
+        setShowPopup(true);
+      }
+    };
+
+    window.addEventListener('mouseout', handleExitIntent);
+
+    return () => {
+      window.removeEventListener('mouseout', handleExitIntent);
+    };
   }, []);
+  
 
-  useEffect(() => {
-    if (time >= 45) {
-      setShowPopup(true);
-    }
-  }, [time]);
-
-  const handleSubmit = (event) => {
-    // event.preventDefault();
-    setShowPopup(false);
-  };
   return (
     <>
-      {showPopup && (
+    {/* pop up triggers after 45 sec. */}
+      {/* {showPopup && (
         <PopUp>
           <>
             <form onSubmit={handleSubmit}>
@@ -74,7 +95,17 @@ const Home = () => {
             </form>
           </>
         </PopUp>
+      )} */}
+
+      {showPopup && (
+        <PopUp> 
+          <h2> ARE YOU REALLY WANT TO LEAVE?</h2>
+          <div style={{display: 'flex'}}>
+          </div>
+        </PopUp>
       )}
+
+      
       <MainDiv>
         <About />
         <Gallery />
